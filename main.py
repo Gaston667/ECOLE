@@ -28,23 +28,23 @@ def login():
     return redirect(url_for('dashboard'))
 
 # Tableau de bord des élèves
-@app.route('/dashboard')
+@app.route('/dashboard_eleves')
 def dashboard():
     # Code pour récupérer les notes, absences et retards de l'élève depuis la base de données
     # Afficher ces informations dans le modèle HTML
-    return render_template('dashboard.html')
+    return render_template('dashboard_eleves.html')
 
 # Espace de gestion des notes pour les enseignants
-@app.route('/manage-grades')
-def manage_grades():
+@app.route('/dashboard_prof')
+def dashboard_prof():
     # Code pour permettre aux enseignants de gérer les notes dans le modèle HTML
-    return render_template('manage_grades.html')
+    return render_template('dashboard_prof.html')
 
 # Page d'administration pour le personnel de direction
-@app.route('/admin')
-def admin():
+@app.route('/administration')
+def administration():
     # Code pour permettre au personnel de direction de gérer les utilisateurs, générer des rapports, etc.
-    return render_template('admin.html')
+    return render_template('administration.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
