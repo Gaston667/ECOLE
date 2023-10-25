@@ -3,7 +3,7 @@ from auth import auth_blueprint
 from dashboard import dashboard_blueprint
 from database import DatabaseManager
 
-app = Flask(__name__)
+app = Flask(__name__)   
 app.secret_key = "A!a1V@2h83*)}{"
 
 # Initialisation de la base de données

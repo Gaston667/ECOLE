@@ -87,18 +87,22 @@ class DatabaseManager:
         # Enregistrer les modifications
         self.conn.commit()
 
+    def inset_eleve(self):
+        pass
+
+    def inset_enseignant(self):
+        pass
+
+    def inset_diretion(self):
+        pass
+    
     # fonction pour insérer un utilisateur dans la base de données
-    def insert_eleves(self, matricule, password, nom, prenom, age, classe_id, parent_1_telephone, parent_2_telephone):
+    def insert_user(self, user_type):
         # Code pour insérer un utilisateur dans la base de données
-        pass
+        if user_type == 'eleve':
+            
+            pass
     
-    def insert_enseignants(self, matricule, password, nom, prenom, telephone, email, materie_id, principal_classe_id):
-        # Code pour insérer un utilisateur dans la base de données
-        pass
-    
-    def insert_direction(self, matricule, password, nom, prenom, email, telephone):
-        # Code pour insérer un utilisateur dans la base de données
-        pass
 
     # Fonction pour récupérer un utilisateur par matricule depuis la base de données
     def get_user_by_matricule(self, matricule):
