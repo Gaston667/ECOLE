@@ -34,8 +34,6 @@ class DatabaseManager:
                                 telephone TEXT,
                                 email TEXT,
                                 materie_id INTEGER,
-                                principal_classe_id INTEGER,
-                                FOREIGN KEY(principal_classe_id) REFERENCES classe(id)
                                 FOREIGN KEY(materie_id) REFERENCES matiere(id)
                                 )''')
 
@@ -47,6 +45,7 @@ class DatabaseManager:
                                 prenom TEXT NOT NULL,
                                 email TEXT,
                                 telephone TEXT,
+                                poste TEXT,
                                 )''')
         
         # Créer la table des classes
@@ -55,6 +54,8 @@ class DatabaseManager:
                                 niveau TEXT NOT NULL,
                                 nom TEXT NOT NULL,
                                 numero_salle INTEGER NOT NULL
+                                principal_matricule TEXT,
+                                FOREIGN KEY(principal_matricule) REFERENCES enseignants(matricule)
                                 )''')
         
         # créer la table Matiere 
@@ -70,7 +71,7 @@ class DatabaseManager:
                                 note_1 REAL,
                                 note_2 REAL,
                                 note_3 REAL,
-                                trimestre INTEGER,
+                                trimestre TEXT,
                                 FOREIGN KEY(eleve_matricule) REFERENCES eleves(matricule),
                                 FOREIGN KEY(matiere_id) REFERENCES matiere(ID)
                             )''')
@@ -81,6 +82,15 @@ class DatabaseManager:
                                 eleve_matricule INTEGER,
                                 date_absence DATE,
                                 motif_absence TEXT,
+                                FOREIGN KEY(eleve_matricule) REFERENCES eleves(matricule)
+                            )''')
+        
+        #Crée la table des retards
+        self.cursor.execute('''CREATE TABLE IF NOT EXISTS retard (
+                                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                eleve_matricule INTEGER,
+                                date_retard DATE,
+                                motif_retard TEXT,
                                 FOREIGN KEY(eleve_matricule) REFERENCES eleves(matricule)
                             )''')
 
