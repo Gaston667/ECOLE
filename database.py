@@ -272,7 +272,6 @@ class DatabaseManager:
                                VALUES (?, ?, ?)''', (eleve_matricule, date_retard, motif_retard))
         self.conn.commit()
 
-
     # Fonction pour fermer la connexion avec la base de données
     def close_connection(self):
         self.conn.close()
