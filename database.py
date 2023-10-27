@@ -97,28 +97,42 @@ class DatabaseManager:
         # Enregistrer les modifications
         self.conn.commit()
 
-    def inset_eleve(self):
-        pass
+    # Fonction pour ajouter un utilisateur(enseignant) dans la base de données
+    def insert_enseignant(self, matricule, mot_de_passe, nom, prenom, telephone, email, materie_id):
+        self.cursor.execute('''INSERT INTO enseignants (matricule, mot_de_passe, nom, prenom, telephone, email, materie_id) 
+                               VALUES (?, ?, ?, ?, ?, ?, ?)''', (matricule, generate_password_hash(mot_de_passe), nom, prenom, telephone, email, materie_id))
+        self.conn.commit()
 
-    def inset_enseignant(self):
-        pass
+    # Fonction pour ajouter un utilisateur(eleve) dans la base de données
+    def insert_direction(self, matricule, mot_de_passe, nom, prenom, email, telephone, poste):
+        self.cursor.execute('''INSERT INTO direction (matricule, mot_de_passe, nom, prenom, email, telephone, poste) 
+                               VALUES (?, ?, ?, ?, ?, ?, ?)''', (matricule, generate_password_hash(mot_de_passe), nom, prenom, email, telephone, poste))
+        self.conn.commit()
 
-    def inset_diretion(self):
-        pass
+    # Fonction pour récupérer un élève par son matricule dans la base de données
+    def get_eleve_by_matricule(self, matricule):
+        self.cursor.execute("SELECT * FROM eleves WHERE matricule=?", (matricule,))
+        eleve = self.cursor.fetchone()
+        if eleve:
+            return {'user_type': 'eleve', 'matricule': eleve[0], 'mot_de_passe': eleve[1], 'nom': eleve[2], 'prenom': eleve[3], 'age': eleve[4], 'classe_id': eleve[5], 'parent_1_telephone': eleve[6], 'parent_2_telephone': eleve[7]}
+        return None
+
+    # Fonction pour récupérer un enseignant par son matricule dans la base de données
+    def get_enseignant_by_matricule(self, matricule):
+        self.cursor.execute("SELECT * FROM enseignants WHERE matricule=?", (matricule,))
+        enseignant = self.cursor.fetchone()
+        if enseignant:
+            return {'user_type': 'enseignant', 'matricule': enseignant[0], 'mot_de_passe': enseignant[1], 'nom': enseignant[2], 'prenom': enseignant[3], 'telephone': enseignant[4], 'email': enseignant[5], 'materie_id': enseignant[6]}
+        return None
+
+    # Fonction pour​ récupérer un directeur par son matricule dans la base de données
+    def get_direction_by_matricule(self, matricule):
+        self.cursor.execute("SELECT * FROM direction WHERE matricule=?", (matricule,))
+        direction_member = self.cursor.fetchone()
+        if direction_member:
+            return {'user_type': 'direction', 'matricule': direction_member[0], 'mot_de_passe': direction_member[1], 'nom': direction_member[2], 'prenom': direction_member[3], 'email': direction_member[4], 'telephone': direction_member[5], 'poste': direction_member[6]}
+        return None
     
-    # fonction pour insérer un utilisateur dans la base de données
-    def insert_user(self, user_type):
-        # Code pour insérer un utilisateur dans la base de données
-        if user_type == 'eleve':
-            
-            pass
-    
-
-    # Fonction pour récupérer un utilisateur par matricule depuis la base de données
-    def get_user_by_matricule(self, matricule):
-        # Code pour récupérer un utilisateur par matricule depuis la base de données
-        pass
-
     # Fonction pour fermer la connexion avec la base de données
     def close_connection(self):
         self.conn.close()
