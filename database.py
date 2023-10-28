@@ -35,7 +35,8 @@ class DatabaseManager:
                                 email TEXT,
                                 materie_id INTEGER,
                                 FOREIGN KEY(materie_id) REFERENCES matiere(id)
-                                )''')
+                                )'''
+        )
 
         # Créer la table du personnel de direction
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS direction (
@@ -46,7 +47,8 @@ class DatabaseManager:
                                 email TEXT,
                                 telephone TEXT,
                                 poste TEXT,
-                                )''')
+                                )'''
+        )
         
         # Créer la table des classes
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS classe (
@@ -275,3 +277,5 @@ class DatabaseManager:
     # Fonction pour fermer la connexion avec la base de données
     def close_connection(self):
         self.conn.close()
+
+    

@@ -11,6 +11,7 @@ db_manager = DatabaseManager('BDD\database.db')
 bdd_conn = db_manager.conn
 bdd_cursor = db_manager.cursor
 
+
 # Autres routes d'authentification si nécessaire
 @auth_blueprint.route('/login', methods=['POST', 'GET'])
 def login():
