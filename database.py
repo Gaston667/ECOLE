@@ -10,7 +10,7 @@ class DatabaseManager:
 
     # Fonction pour créer les tables de la base de données
     def create_tables(self):
-           # Créer la table des élèves
+        # Créer la table des élèves
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS eleves (
                                 matricule TEXT NOT NULL PRIMARY KEY,
                                 mot_de_passe TEXT NOT NULL,
@@ -46,7 +46,7 @@ class DatabaseManager:
                                 prenom TEXT NOT NULL,
                                 email TEXT,
                                 telephone TEXT,
-                                poste TEXT,
+                                poste TEXT
                                 )'''
         )
         
@@ -55,9 +55,9 @@ class DatabaseManager:
                                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                                 niveau TEXT NOT NULL,
                                 nom TEXT NOT NULL,
-                                numero_salle INTEGER NOT NULL
-                                principal_matricule TEXT,
-                                FOREIGN KEY(principal_matricule) REFERENCES enseignants(matricule)
+                                numero_salle INTEGER NOT NULL,
+                                principal_prof TEXT,
+                                FOREIGN KEY(principal_prof) REFERENCES enseignants(matricule)
                                 )''')
         
         # créer la table Matiere 
