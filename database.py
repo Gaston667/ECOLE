@@ -1,12 +1,28 @@
 import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
 
+
 class DatabaseManager:
     
     # Initialisation de la base de données
-    def __init__(self, db_name):
-        self.conn = sqlite3.connect(db_name)
-        self.cursor = self.conn.cursor()
+    def __init__(self, db_name) -> None:
+        self.db_name = db_name
+    
+    # def __init__(self, db_name):
+    #     self.conn = sqlite3.connect(db_name)
+    #     self.cursor = self.conn.cursor()
+        
+    def conn_and_get_cursor(self):
+        # Connexion à la bdd si elle existe, sinon créer la bdd puis se conecter à bdd
+        conn = sqlite3.connect(self.db_name)
+        # Creation du curseur 
+        curr = conn.cursor()
+        try:
+            yield curr
+        finally:
+            conn.commit()
+            conn.close()
+        
 
     # Fonction pour créer les tables de la base de données
     def create_tables(self):
@@ -24,7 +40,6 @@ class DatabaseManager:
                         )'''
         )
     
-
         # Créer la table des enseignants
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS enseignants (
                                 matricule TEXT NOT NULL PRIMARY KEY,
@@ -159,7 +174,7 @@ class DatabaseManager:
                 liste_eleves.append(eleve_info)
             return liste_eleves
         else:
-            return print("Aucun élève trouvé avec les critères spécifiés.")
+            return None
 
     # Fonction pour récupérer un enseignant par différents critères
     def get_enseignant_by_params(self, matricule=None, nom=None, prenom=None, telephone=None):
@@ -223,9 +238,12 @@ class DatabaseManager:
 
         # Supprime le dernier "AND" de la requête
         query = query[:-4]
+        with self.conn_and_get_cursor() as cursor:
+            cursor.execute(query, tuple(params))
+            direction_members = cursor.fetchall()
 
-        self.cursor.execute(query, tuple(params))
-        direction_members = self.cursor.fetchall()
+        # self.cursor.execute(query, tuple(params))
+        # direction_members = self.cursor.fetchall()
 
         if direction_members:
             liste_direction = []
@@ -243,7 +261,7 @@ class DatabaseManager:
                 liste_direction.append(direction_info)
             return liste_direction
         else:
-            return print("Aucun membre de la direction trouvé avec les critères spécifiés.")
+            return None
 
     # Fonction pour ajouter une classe dans la base de données
     def insert_classe(self, niveau, nom, numero_salle, principal_matricule):
@@ -272,10 +290,8 @@ class DatabaseManager:
     def insert_retard(self, eleve_matricule, date_retard, motif_retard):
         self.cursor.execute('''INSERT INTO retard (eleve_matricule, date_retard, motif_retard) 
                                VALUES (?, ?, ?)''', (eleve_matricule, date_retard, motif_retard))
-        self.conn.commit()
+        # self.conn.commit()
 
     # Fonction pour fermer la connexion avec la base de données
-    def close_connection(self):
-        self.conn.close()
-
-    
+    # def close_connection(self):
+        # self.conn.close()
