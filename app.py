@@ -7,8 +7,7 @@ app = Flask(__name__)
 app.secret_key = "A!a1V@2h83*)}{"
 
 # Initialisation de la base de données
-db_manager = DatabaseManager('BDD\database.db')
-
+db_manager = DatabaseManager()
 
 
 # Enregistrement des Blueprints
