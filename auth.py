@@ -6,7 +6,6 @@ auth_blueprint = Blueprint('auth', __name__)
 
 # Initialisation de la base de données
 db_manager = DatabaseManager('BDD\database.db')
-
 # Connexion à la base de données
 bdd_conn = db_manager.conn
 bdd_cursor = db_manager.cursor
@@ -20,7 +19,7 @@ def login():
         password = request.form['password']
         role = request.form['role']
         if matricule and password and role != '':
-            user = db_manager.get_user_by_matricule(matricule)
+            user = db_manager.get_direction_by_params(matricule=matricule)
             if user and check_password_hash(user['password'], password):
                 # Utilisateur authentifié, effectuez la redirection en fonction du rôle
                 pass
