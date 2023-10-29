@@ -5,17 +5,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 auth_blueprint = Blueprint('auth', __name__)
 
 # Initialisation de la base de données
-<<<<<<< HEAD
-db_manager = DatabaseManager('BDD\database.db')
-
-# Connexion à la base de données
-bdd_conn = db_manager.conn
-bdd_cursor = db_manager.cursor
-
-
-=======
 db_manager = DatabaseManager()
->>>>>>> test
 # Autres routes d'authentification si nécessaire
 @auth_blueprint.route('/login', methods=['POST', 'GET'])
 def login():
