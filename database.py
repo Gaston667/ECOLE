@@ -2,11 +2,51 @@ import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
 
 class DatabaseManager:
+    '''
+    # # Initialisation de la base de données
+    # def __init__(self,) -> None:
+    #     self.db_name = 'BDD\database.db'
     
+    # # def __init__(self, db_name):
+    # #     self.conn = sqlite3.connect(db_name)
+    # #     self.cursor = self.conn.cursor()
+    
+    # @contextmanager  
+    # def conn_and_get_cursor(self):
+    #     # Connexion à la bdd si elle existe, sinon créer la bdd puis se conecter à bdd
+    #     conn = sqlite3.connect(self.db_name)
+    #     # Creation du curseur 
+    #     cursor = conn.cursor()
+    #     try:
+    #         yield cursor
+    #     finally:
+    #         conn.commit()
+    #         conn.close()
+    '''
     # Initialisation de la base de données
-    def __init__(self, db_name):
-        self.conn = sqlite3.connect(db_name)
+    # Définition du constructeur de la classe DatabaseManager
+    def __init__(self):
+        # Initialisation du nom de la base de données
+        self.db_name = 'BDD\database.db'
+        # Initialisation de la connexion à la base de données à None
+        self.conn = None
+
+    # Début du gestionnaire de contexte (méthode appelée lorsqu'on utilise 'with DatabaseManager() as db_manager:')
+    def __enter__(self):
+        # Établissement de la connexion à la base de données avec le nom de la base de données
+        self.conn = sqlite3.connect(self.db_name)
+        # Création d'un curseur pour effectuer des opérations sur la base de données
         self.cursor = self.conn.cursor()
+        # Retourne l'instance de la classe (self) pour permettre son utilisation dans le bloc 'with'
+        return self
+
+    # Fin du bloc 'with', cette méthode est appelée à la fin du bloc 'with'
+    def __exit__(self, exc_type, exc_value, traceback):
+        # Commit des modifications effectuées dans la base de données
+        self.conn.commit()
+        # Fermeture de la connexion à la base de données
+        self.conn.close()
+
 
     # Fonction pour créer les tables de la base de données
     def create_tables(self):
@@ -160,7 +200,7 @@ class DatabaseManager:
                 liste_eleves.append(eleve_info)
             return liste_eleves
         else:
-            return print("Aucun élève trouvé avec les critères spécifiés.")
+            return None
 
     # Fonction pour récupérer un enseignant par différents critères
     def get_enseignant_by_params(self, matricule=None, nom=None, prenom=None, telephone=None):
@@ -224,9 +264,12 @@ class DatabaseManager:
 
         # Supprime le dernier "AND" de la requête
         query = query[:-4]
-
+        
         self.cursor.execute(query, tuple(params))
         direction_members = self.cursor.fetchall()
+
+        # self.cursor.execute(query, tuple(params))
+        # direction_members = self.cursor.fetchall()
 
         if direction_members:
             liste_direction = []
@@ -244,7 +287,7 @@ class DatabaseManager:
                 liste_direction.append(direction_info)
             return liste_direction
         else:
-            return print("Aucun membre de la direction trouvé avec les critères spécifiés.")
+            return None
 
     # Fonction pour ajouter une classe dans la base de données
     def insert_classe(self, niveau, nom, numero_salle, principal_matricule):
@@ -273,10 +316,5 @@ class DatabaseManager:
     def insert_retard(self, eleve_matricule, date_retard, motif_retard):
         self.cursor.execute('''INSERT INTO retard (eleve_matricule, date_retard, motif_retard) 
                                VALUES (?, ?, ?)''', (eleve_matricule, date_retard, motif_retard))
-        self.conn.commit()
-
-    # Fonction pour fermer la connexion avec la base de données
-    def close_connection(self):
-        self.conn.close()
-
-    
+        # self.conn.commit()
+ 
