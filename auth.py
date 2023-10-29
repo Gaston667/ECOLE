@@ -6,7 +6,6 @@ auth_blueprint = Blueprint('auth', __name__)
 
 # Initialisation de la base de données
 db_manager = DatabaseManager()
-
 # Autres routes d'authentification si nécessaire
 @auth_blueprint.route('/login', methods=['POST', 'GET'])
 def login():
