@@ -17,6 +17,7 @@ def login():
         role = request.form['role']
         # Vérifie si les champs matricule, password et role sont remplis
         if matricule and password and role != '':
+<<<<<<< HEAD
             # Vérifie le rôle de l'utilisateur (dans cet exemple, le rôle 'direction')
             if role == 'direction':
                 # Utilisation du gestionnaire de contexte 'with' pour assurer une gestion appropriée de la connexion à la base de données
@@ -39,6 +40,14 @@ def login():
                     else:
                         # Utilisateur non trouvé dans la base de données, affiche un message d'erreur
                         return render_template('login.html', message='Utilisateur non trouvé')
+=======
+            user = db_manager.get_user_by_matricule(matricule)
+            if user and check_password_hash(user['password'], password):
+                # Utilisateur authentifié, effectuez la redirection en fonction du rôle
+                pass
+            else:
+                return 'Informations d\'authentification incorrectes'
+>>>>>>> dev
         else:
             # Tous les champs ne sont pas remplis, affiche un message d'erreur
             return render_template('login.html', message='Veuillez remplir tous les champs')
