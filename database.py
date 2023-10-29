@@ -1,6 +1,6 @@
 import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
-
+from contextlib import contextmanager
 
 class DatabaseManager:
     
@@ -11,14 +11,15 @@ class DatabaseManager:
     # def __init__(self, db_name):
     #     self.conn = sqlite3.connect(db_name)
     #     self.cursor = self.conn.cursor()
-        
+    
+    @contextmanager  
     def conn_and_get_cursor(self):
         # Connexion à la bdd si elle existe, sinon créer la bdd puis se conecter à bdd
         conn = sqlite3.connect(self.db_name)
         # Creation du curseur 
-        curr = conn.cursor()
+        cursor = conn.cursor()
         try:
-            yield curr
+            yield cursor
         finally:
             conn.commit()
             conn.close()
