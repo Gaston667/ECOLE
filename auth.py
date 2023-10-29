@@ -25,6 +25,7 @@ def login():
                     directionliste = db_manager.get_direction_by_params(matricule=matricule)
                     direction = directionliste[0]
                     # Vérifie si l'utilisateur a été trouvé dans la base de données
+
                     if direction:
                         # Vérifie le mot de passe hashé
                         print(direction)
