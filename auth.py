@@ -17,12 +17,28 @@ def login():
         role = request.form['role']
         # Vérifie si les champs matricule, password et role sont remplis
         if matricule and password and role != '':
-            user = db_manager.get_user_by_matricule(matricule)
-            if user and check_password_hash(user['password'], password):
-                # Utilisateur authentifié, effectuez la redirection en fonction du rôle
-                pass
-            else:
-                return 'Informations d\'authentification incorrectes'
+            # Vérifie le rôle de l'utilisateur (dans cet exemple, le rôle 'direction')
+            if role == 'direction':
+                # Utilisation du gestionnaire de contexte 'with' pour assurer une gestion appropriée de la connexion à la base de données
+                with db_manager:
+                    # Récupère les informations de l'utilisateur (direction) à partir de la base de données
+                    directionliste = db_manager.get_direction_by_params(matricule=matricule)
+                    direction = directionliste[0]
+                    # Vérifie si l'utilisateur a été trouvé dans la base de données
+
+                    if direction:
+                        # Vérifie le mot de passe hashé
+                        print(direction)
+                        print(password)
+                        if check_password_hash(direction['mot_de_passe'], password) :
+                            # Utilisateur authentifié, effectue la redirection vers le tableau de bord de la direction
+                            return f"<p>DIRECTION</p><p> bonjour {direction['nom']}</p>"
+                        else:
+                            # Mot de passe incorrect, affiche un message d'erreur
+                            return render_template('login.html', message='Mot de passe incorrect')
+                    else:
+                        # Utilisateur non trouvé dans la base de données, affiche un message d'erreur
+                        return render_template('login.html', message='Utilisateur non trouvé')
         else:
             # Tous les champs ne sont pas remplis, affiche un message d'erreur
             return render_template('login.html', message='Veuillez remplir tous les champs')
