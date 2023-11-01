@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect, url_for
 from database import DatabaseManager
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -23,10 +23,9 @@ def login():
                 with db_manager:
                     # Récupère les informations de l'utilisateur (direction) à partir de la base de données
                     directionliste = db_manager.get_direction_by_params(matricule=matricule)
-                    direction = directionliste[0]
                     # Vérifie si l'utilisateur a été trouvé dans la base de données
-
-                    if direction:
+                    if directionliste:
+                        direction = directionliste[0]
                         # Vérifie le mot de passe hashé
                         print(direction)
                         print(password)
@@ -44,4 +43,4 @@ def login():
             return render_template('login.html', message='Veuillez remplir tous les champs')
     else:
         # Si la requête n'est pas de type POST, affiche la page de formulaire de connexion
-        return render_template('login.html')
+        return render_template('login.html', title='Connexion')
