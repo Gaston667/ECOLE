@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/styles_profs_dash.css">
+    <title>Tableau de Bord Enseignant</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">Profil</a></li>
+                <li><a href="#">Déconnexion</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h2>Tableau de Bord Enseignant</h2>
+        <div class="classe-selection">
+            <label for="classe">Sélectionnez la classe :</label>
+            <select id="classe" name="classe">
+                <option value="6e">6e</option>
+                <option value="5e">5e</option>
+                <option value="5e">4e</option>
+                <option value="5e">3e</option>
+                <option value="5e">2nd</option>
+                <option value="5e">1e</option>
+                <option value="5e">Tle</option>
+                
+            </select>
+        </div>
+        <div class="eleve-selection">
+            <label for="eleve">Sélectionnez un élève :</label>
+            <select id="eleve" name="eleve">
+                <option value="eleve1">élève 1</option>
+                <option value="eleve2">élève 2</option>
+            </select>
+        </div>
+        <div class="notes">
+            <h3>Notes de l'élève</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Matière</th>
+                        <th>Note</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Matière 1</td>
+                        <td><input type="text" id="note-matiere1" name="note-matiere1"></td>
+                    </tr>
+                    <tr>
+                        <td>Matière 2</td>
+                        <td><input type="text" id="note-matiere2" name="note-matiere2"></td>
+                    </tr>
+                    <!-- on doit add d autre fonction ici afther! hassimiou...-->
+                </tbody>
+            </table>
+            <button id="enregistrer-notes" class="btn">Enregistrer les Notes</button>
+        </div>
+    </div>
+</body>
+</html>
