@@ -298,3 +298,5 @@ class DatabaseManager:
         # self.conn.commit()
  
 
+
+DatabaseManager.create_tables
