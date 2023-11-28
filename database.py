@@ -297,6 +297,3 @@ class DatabaseManager:
                                VALUES (?, ?, ?)''', (eleve_matricule, date_retard, motif_retard))
         # self.conn.commit()
  
-
-
-DatabaseManager.create_tables
