@@ -8,7 +8,6 @@ def eleve_dashboard():
     # Code pour récupérer les notes, absences et retards de l'élève depuis la base de données
     # Afficher ces informations dans le modèle HTML
     return  render_template('dashboard_Profs.html', title='dashboard_Profs')
-
 # Espace de gestion des notes pour les enseignants
 @dashboard_blueprint.route('/inscription_eleves')
 def enseignant_dashboard():
