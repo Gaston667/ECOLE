@@ -1,5 +1,6 @@
 *{
-    font-family: 'Poppins', 'sans-serif';
+    /* font-family: 'Poppins', 'sans-serif'; */
+    font-family: Arial, Helvetica, sans-serif;
 }.wrapper{
     background-color: #ececec;
     padding: 0 20px 0 20px;
@@ -8,21 +9,91 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-}.img{
-    width: 35px;
-    position: absolute;
-    top: 30px;
+}.row{
+    width: 900px;
+    height: 550px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.2);
 }.side-image{
-    background-image: url(../img/ecole.png);
+    background-image: url(../img/pexels-allan-mas-5622361.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
     border-radius: 10px 0 0 10px;
-}img{
-    width: 35px;
+}
+img{
+    width: 55px;
     border-radius: 50%;
     position: absolute;
     left: 30px;
     top: 30px;
+}.text{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}.text p{
+    color: #fff;
+    font-size: 18px;
+}i{
+    font-weight: 400;
+    font-size: 15px;
+}.right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}.input-box{
+    width: 330px;
+    box-sizing: border-box;
+}.input-box header{
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 45px;
+}.input-field{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 0 10px 0 10px;
+}.input{
+    height: 45px;
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    outline: none;
+    color: #40414a;
+}.input-box .input-field label{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    pointer-events: none;
+    transition: .5s;
+}.input-field .input:focus ~ label{
+    top: -10px;
+    font-size: 13px;
+}.input-field .input:valid ~ label{
+    top: -10px;
+    font-size: 13px;
+    color: #5d5076;
 }
+/* }.input-field .underline{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+} */
+/* }.input-field .underline::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: #2691d9;
+    transition: .5s;
+} */
