@@ -18,5 +18,8 @@ app.register_blueprint(pages_blueprint)
 def index():
     return render_template('index.html')
 
+# Lancement du serveur
 if __name__ == '__main__':
     app.run(debug=True)
+
+
