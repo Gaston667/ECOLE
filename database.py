@@ -10,9 +10,11 @@ class DatabaseManager:
         # Initialisation de la connexion à la base de données à None
         self.conn = None
 
+
     # Début du gestionnaire de contexte (méthode appelée lorsqu'on utilise 'with DatabaseManager() as db_manager:')
     def __enter__(self):
         # Établissement de la connexion à la base de données avec le nom de la base de données
+        # Initialisation de la connexion à la base de données
         self.conn = sqlite3.connect(self.db_name)
         # Création d'un curseur pour effectuer des opérations sur la base de données
         self.cursor = self.conn.cursor()
