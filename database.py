@@ -297,3 +297,14 @@ class DatabaseManager:
                                VALUES (?, ?, ?)''', (eleve_matricule, date_retard, motif_retard))
         # self.conn.commit()
  
+ 
+bdd = DatabaseManager()
+with bdd:
+    # # Creation des table
+    # bdd.insert_direction(matricule='AD001', mot_de_passe='1234', nom='Diallo', prenom='Algassimou', email='abc@gmail.com', telephone='93829323829'
+    #                       , poste='Directeur',)
+    # bdd.insert_direction(matricule='HB001', mot_de_passe='1234', nom='Barry', prenom='Hassimiou',email='abc@gmail.com',
+    #                     telephone='93829323829', poste='Secretaire',)
+    # # Vérifie si l'utilisateur a été trouvé dans la base de données
+    pass
+    
