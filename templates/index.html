@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% if title is defined %}{{ title }}{% else %}Blaise Pascal{% endif %}</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
     <h1>Bienvenu sur la page >>>></h1>
     <a href="/login">Connexion</a><br><br>
     <a href="/dashboard_Profs">dashboard_Profs</a><br><br>
     <a href="/inscription_admin.html">inscription_admin</a><br><br>
     <a href="/inscription_eleves">inscription_élèves</a><br><br>
     <a href="/inscription_profs">inscription_profs</a>
-</body>
-</html>
+{% endblock %}

@@ -116,8 +116,6 @@ class DatabaseManager:
 
         # Enregistrer les modifications
         self.conn.commit()
-        
-        
 
     # fonction pour ajouter un utilisateur(eleves) dans la base de données
     def insert_eleve(self, matricule, mot_de_passe, nom, prenom, age, classe_id, parent_1_telephone, parent_2_telephone):

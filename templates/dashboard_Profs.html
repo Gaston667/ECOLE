@@ -1,21 +1,5 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/css/styles_profs_dash.css">
-    <title>Tableau de Bord Enseignant</title>
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#">Accueil</a></li>
-                <li><a href="#">Profil</a></li>
-                <li><a href="#">Déconnexion</a></li>
-            </ul>
-        </nav>
-    </header>
+{% extends 'base.html' %}
+{% block content %}
     <div class="container">
         <h2>Tableau de Bord Enseignant</h2>
         <div class="classe-selection">
@@ -62,5 +46,4 @@
             <button id="enregistrer-notes" class="btn">Enregistrer les Notes</button>
         </div>
     </div>
-</body>
-</html>
+{% endblock %}
