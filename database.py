@@ -297,3 +297,13 @@ class DatabaseManager:
                                VALUES (?, ?, ?)''', (eleve_matricule, date_retard, motif_retard))
         # self.conn.commit()
  
+ 
+bdd = DatabaseManager()
+with bdd:
+    # # Creation des table
+    # bdd.insert_enseignant(matricule='AD001', mot_de_passe='1234', nom='Diallo', prenom='Algassimou', telephone='93829323829',
+    #                       email='abc@gmail.com', materie_id=1)
+    # bdd.insert_eleve(matricule='AD001', mot_de_passe='1234', nom='Diallo', prenom='Algassimou', age='99', classe_id='3',
+    #                  parent_1_telephone='90239029302', parent_2_telephone='302932039029')
+    # # Vérifie si l'utilisateur a été trouvé dans la base de données
+    pass

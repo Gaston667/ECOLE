@@ -21,9 +21,11 @@
                 <div class="col-md-6 right">
                     <div class="input-box">
                         <header>LOGIN</header>
-                        <div class="input-box message">
-                            <p> {{ message }} </p>
-                        </div>
+                        {% if message is defined %} 
+                            <div class="input-box message">
+                                <p>{{ message }}</p>
+                            </div>
+                        {% endif %}
                         <div class="input-field">
                             <input type="text" class="input" id="matricule" name="matricule" required autocomplete="off">
                             <label for="matricule">Matricule </label>
@@ -32,12 +34,23 @@
                             <input type="password" class="input" id="password" name="password" required>
                             <label for="password">Mot de passe </label>
                         </div>
+                        
+                        <div class="select">
+                            <label for="role">Rôle:</label>
+                            <span class=""><ion-icon name="filter-outline"></ion-icon></span>
+                            <select id="role" name="role" required>
+                                <option value="eleve">Élève</option>
+                                <option value="enseignant">Enseignant</option>
+                                <option value="direction">Direction</option>
+                            </select>
+                        </div>
                         <div class="input-field">
                             <input type="submit" class="submit" value="Connexion">
                         </div>
-                        <div>
+                        <div class="forget">
                             <span>Forgot password ? <a href="#"> Clique here </a></span> 
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -61,15 +74,7 @@
                     <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
                     
                 </div> -->
-                <!-- <div class="select">
-                    <label for="role">Rôle:</label>
-                    <span class=""><ion-icon name="filter-outline"></ion-icon></span>
-                    <select id="role" name="role" required>
-                        <option value="eleve">Élève</option>
-                        <option value="enseignant">Enseignant</option>
-                        <option value="direction">Direction</option>
-                    </select>
-                </div>
+                <!-- 
                  -->
                 
             <!-- </form> -->

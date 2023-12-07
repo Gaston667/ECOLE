@@ -19,3 +19,5 @@ def direction_dashboard():
     # ....
     return render_template('inscription_admin.html', title='dashboard_Profs')
 # Autres routes de tableau de bord si nécessaire
+
+
