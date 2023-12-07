@@ -6,7 +6,7 @@ class DatabaseManager:
     # Définition du constructeur de la classe DatabaseManager
     def __init__(self):
         # Initialisation du nom de la base de données
-        self.db_name = 'BDD\database.db'
+        self.db_name = 'bdd\database.db'
         # Initialisation de la connexion à la base de données à None
         self.conn = None
 
@@ -301,10 +301,14 @@ class DatabaseManager:
 bdd = DatabaseManager()
 with bdd:
     # # Creation des table
-    # bdd.insert_direction(matricule='AD001', mot_de_passe='1234', nom='Diallo', prenom='Algassimou', email='abc@gmail.com', telephone='93829323829'
-    #                       , poste='Directeur',)
-    # bdd.insert_direction(matricule='HB001', mot_de_passe='1234', nom='Barry', prenom='Hassimiou',email='abc@gmail.com',
-    #                     telephone='93829323829', poste='Secretaire',)
-    # # Vérifie si l'utilisateur a été trouvé dans la base de données
-    pass
+    # bdd.create_tables()
+    # bdd.insert_direction(matricule='AD001', mot_de_passe='1234', nom='Diallo', prenom='Algassimou', email='abc@gmail.com', telephone='93829323829', poste='Directeur',)
+    # bdd.insert_direction(matricule='HB001', mot_de_passe='1234', nom='Barry', prenom='Hassimiou',email='abc@gmail.com', telephone='93829323829', poste='Secretaire')
+    # bdd.insert_eleve(matricule='AD001', mot_de_passe='1234', nom='Diallo', prenom='Algassimou', age='20', classe_id=1, parent_1_telephone='93829323829', parent_2_telephone='93829323829')
+    # bdd.insert_eleve(matricule='HB001', mot_de_passe='1234', nom='Barry', prenom='Hassimiou', age='20', classe_id=2, parent_1_telephone='93829323829', parent_2_telephone='93829323829')
+    # bdd.insert_enseignant(matricule='AD001', mot_de_passe='1234', nom='Diallo', prenom='Algassimou', telephone='93829323829', email='abc@gmail.com', materie_id=1)
+    # bdd.insert_enseignant(matricule='HB001', mot_de_passe='1234', nom='Barry', prenom='Hassimiou', telephone='93829323829', email='abc@gmail.com', materie_id=2)
     
+    # # Vérifie si l'utilisateur a été trouvé dans la base de données
+   
+   pass

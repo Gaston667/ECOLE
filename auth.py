@@ -16,7 +16,6 @@ def login():
         matricule = request.form['matricule']
         password = request.form['password']
         role = request.form['role']
-        print(matricule, role)
         # Vérifie si les champs matricule, password et role sont remplis
         if matricule and password and role != '':
             # Vérifie le rôle de l'utilisateur (direction ou enseignant ou eleve)
