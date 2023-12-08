@@ -1,38 +1,59 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="container">
-        <h2>Inscription Membre de la Direction</h2>
-        <img src="../static/img/blaise pascal.jpg" alt="">
+        <h2 class="text-center" style="font-size: 1.5rem;">Inscription Membre de la Direction</h2>
+        <div class="text-center">
+            <img src="../static/img/blaise pascal.jpg" alt="" class="rounded-circle img-thumbnail">
+        </div>
         <form action="" method="post"> 
-            <div class="form-group">
-                <label for="matricule">Matricule :</label>
-                <input type="text" id="matricule" name="matricule" required>
+            <div class="mb-3 row">
+                <label for="matricule" class="col-sm-3 col-form-label">Matricule :</label>
+                <div class="col-sm-9">
+                    <input type="text" id="matricule" name="matricule" class="form-control" required>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="motdepasse">Mot de passe :</label>
-                <input type="password" id="motdepasse" name="motdepasse" required>
+            <div class="mb-3 row">
+                <label for="motdepasse" class="col-sm-3 col-form-label">Mot de passe :</label>
+                <div class="col-sm-9">
+                    <input type="password" id="motdepasse" name="motdepasse" class="form-control" required>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="nom">Nom :</label>
-                <input type="text" id="nom" name="nom" required>
+            <div class="mb-3 row">
+                <label for="nom" class="col-sm-3 col-form-label">Nom :</label>
+                <div class="col-sm-9">
+                    <input type="text" id="nom" name="nom" class="form-control" required>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="prenom">Prénom :</label>
-                <input type="text" id="prenom" name="prenom" required>
+            <div class="mb-3 row">
+                <label for="prenom" class="col-sm-3 col-form-label">Prénom :</label>
+                <div class="col-sm-9">
+                    <input type="text" id="prenom" name="prenom" class="form-control" required>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="email">Email :</label>
-                <input type="email" id="email" name="email" required>
+            <div class="mb-3 row">
+                <label for="email" class="col-sm-3 col-form-label">Email :</label>
+                <div class="col-sm-9">
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="telephone">Téléphone :</label>
-                <input type="tel" id="telephone" name="telephone" required>
+            <div class="mb-3 row">
+                <label for="telephone" class="col-sm-3 col-form-label">Téléphone :</label>
+                <div class="col-sm-9">
+                    <input type="tel" id="telephone" name="telephone" class="form-control" required>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="poste">Poste :</label>
-                <input type="text" id="poste" name="poste" required>
+            <div class="mb-3 row">
+                <label for="poste" class="col-sm-3 col-form-label">Poste :</label>
+                <div class="col-sm-9">
+                    <input type="text" id="poste" name="poste" class="form-control" required>
+                </div>
             </div>
-            <button type="submit">S'inscrire</button>
+            <div class="mb-3 row">
+                <div class="col-sm-3"></div> <!-- Colonne vide pour l'espacement -->
+                <div class="col-sm-9">
+                    <button type="submit" class="btn btn-primary" style="font-size: 1rem;">S'inscrire</button>
+                </div>
+            </div>
         </form>
     </div>
 {% endblock %}
