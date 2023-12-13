@@ -1,0 +1,40 @@
+/* Mise en forme générale du tableau de bord */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Styles pour les sélecteurs de classe et d'élève */
+.classe-selection, .eleve-selection {
+    margin-bottom: 20px;
+}
+
+/* Style pour le bouton "Enregistrer les Notes" */
+#enregistrer-notes {
+    width: 100%;
+}
+
+/* Style pour la table des notes */
+table {
+    width: 100%;
+}
+
+/* Style pour les boutons */
+.btn {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
